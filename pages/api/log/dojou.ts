@@ -20,6 +20,10 @@ export default async function handler(
       const createRes = await prisma.dojouData.create({ data: { ...data } });
       res.status(201).json({ status: "created" });
       return;
+    case "DELETE":
+      const deleteRes = await prisma.dojouData.deleteMany();
+      res.status(200).json({ status: "deleted" });
+      return;
   }
   res.status(400).json({ error: "bad request" });
 }
